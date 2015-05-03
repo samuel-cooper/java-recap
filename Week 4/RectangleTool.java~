@@ -1,0 +1,59 @@
+import java.util.Scanner;
+
+public class RectangleTool {
+
+	public static void main(String[] args) {
+
+
+		Scanner scan= new Scanner(System.in);
+
+		//declare all variables
+		String temp = " ";
+		String command = " ";
+		String[] inputs;
+		double arg0, arg1, arg2, arg3;
+
+		do {
+
+			System.out.print("?  ");
+			command = scan.next(); 
+
+			if(command.equalsIgnoreCase("quit")) {
+				//do nothing
+			} else {
+				
+				//temp = scan.nextLine();
+				inputs = scan.nextLine.split(" ");
+
+				arg0 = Double.parseDouble(inputs[1]);
+				arg1 = Double.parseDouble(inputs[2]);
+				arg2 = Double.parseDouble(inputs[3]);
+				arg3 = Double.parseDouble(inputs[4]);
+
+				switch(command) {
+
+					case "area":		//construct new Rectangle object 
+										Rectangle areaBox = new Rectangle(arg0, arg1, arg2, arg3);
+							
+										//print Rectangle.getArea();		
+										System.out.println("Area of " + areaBox.toString() + " = "  + areaBox.getArea());
+										break;
+
+					case "perimeter":	//construct new Rectangle object 
+										Rectangle perimeterBox = new Rectangle(arg0, arg1, arg2, arg3);
+							
+										//print Rectangle.getPerimeter();		
+										System.out.println("Perimeter of " + perimeterBox.toString() + " = "  + perimeterBox.getPerimeter());
+										break;
+
+					case "quit":		//quit program
+										break;
+			
+				} //switch
+			} //else
+
+		} while(!command.equalsIgnoreCase("quit"));//while
+	
+	} //main
+
+} //class

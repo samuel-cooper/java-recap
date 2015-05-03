@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class LesserString {
+	
+	public static void main(String[] args) {
+		
+		Scanner scan = new Scanner(System.in);
+		String arg1, arg2, lesser;
+
+		arg1 = scan.nextLine();
+		arg2 = scan.nextLine();
+
+		if(arg1.compareToIgnoreCase(arg2) < 0) {
+			System.out.println("Lesser is: " + arg1);
+		} else {
+			System.out.println("Lesser is: " + arg2);
+		}
+
+	}
+		
+}

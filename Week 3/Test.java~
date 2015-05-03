@@ -1,0 +1,20 @@
+public class Test {
+
+	public static void main(String[] args) {
+
+		double arg0, arg1, arg2, arg3;
+		
+		arg0 = Double.parseDouble(args[0]);
+		arg1 = Double.parseDouble(args[1]);
+		arg2 = Double.parseDouble(args[2]);
+		arg3 = Double.parseDouble(args[3]);
+
+		Rectangle fuzzyBox = new Rectangle(arg0, arg1, arg2, arg3);
+
+		System.out.println("rectangle = " + fuzzyBox.toString());
+		System.out.println("area = " + fuzzyBox.getArea());
+		System.out.println("perimeter = " + fuzzyBox.getPerimeter());
+	
+	}
+
+}
