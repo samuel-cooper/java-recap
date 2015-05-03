@@ -1,27 +1,72 @@
 public class AccountNumber {
 	
-	private int[] digits;
+	private int[] digits = new int[11];
 
 	public AccountNumber(boolean random) {
-
-
+		
+		if(random) {
+				for(int i = 0; i < 9; i++) {
+					digits[i] = (int) (Math.random() * 10.0);
+				}
+			int check = checksum();
+			digits[9] 	= check / 10;
+			digits[10]	= check % 10;
+			
+		}
 
 	}
 
 	public String toString() {
 
-
+		StringBuilder num = new StringBuilder(14);
+		for(int i = 0; i < 11; i++) {
+			num.append(digits[i]);
+			if((i + 1) % 3 == 0) {
+				num.append(' ');
+			} else {
+				//do nothing
+			}
+		}
+		return num.toString();
 
 	}
 
 	public static AccountNumber fromString(String number) {
-
-
-
+		AccountNumber acc_num = new AccountNumber(false);
+		int pos = 0;				//position in String number
+		int num = 0;				//number of digits
+		int len = number.length();
+		boolean valid = true;
+		
+		while(valid) {
+			char c = number.charAt(pos);
+			pos++;
+			if(Character.isDigit(c)) {
+				acc_num.digits[num] = c - '0';
+				num++;
+			} else if(Character.isWhitespace(c)) {
+				//do nothing
+			} else {
+				valid = false;
+			}
+		}
+		
+		int check = acc_num.checksum();
+		if(valid && pos == len && num == len && check / 10 == acc_num.digits[9] && check % 10 == acc_num.digits[10])
+		{
+			return acc_num;
+		} else {
+			return null;
+		}
 	}
 
 	private int checksum() {
-
+		final int WEIGHTS[] = {2, 3, 5, 7, 11, 13, 17, 19, 23};
+		int sum = 0;
+		for(int i = 0; i < 9; i++) {
+			sum += WEIGHTS[i] * digits[i];
+		}
+		return sum % 100;
 	
 	}
 }
