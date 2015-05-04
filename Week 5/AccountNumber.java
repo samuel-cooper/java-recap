@@ -33,16 +33,16 @@ public class AccountNumber {
 
 	public static AccountNumber fromString(String number) {
 		AccountNumber acc_num = new AccountNumber(false);
-		int pos = 0;				//position in String number
-		int num = 0;				//number of digits
-		int len = number.length();
+		int 	pos = 0,				//position in String number
+				num = 0,				//number of digits read in
+				len = number.length();
 		boolean valid = true;
 		
-		while(valid) {
+		while(valid && pos < len) {
 			char c = number.charAt(pos);
 			pos++;
-			if(Character.isDigit(c)) {
-				acc_num.digits[num] = c - '0';
+			if(num < 11 && Character.isDigit(c)) {
+				acc_num.digits[num] = (c - '0');
 				num++;
 			} else if(Character.isWhitespace(c)) {
 				//do nothing
