@@ -75,4 +75,18 @@ public class AccountNumber {
 		return sum % 100;
 	
 	}
+	
+	//return a new barcode object containing the digits of this account number
+	public Barcode toBarcode() {
+	
+		return new Barcode(digits);
+	
+	}
+	
+	//returns a new account number if a barcode contains the digits of a valid account number
+	public static AccountNumber fromBarcode(Barcode b) {
+		
+		
+	
+	}
 }

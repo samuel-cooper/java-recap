@@ -32,20 +32,15 @@ public class AccountNumber {
 	}
 
 	public static AccountNumber fromString(String number) {
-		
 		AccountNumber acc_num = new AccountNumber(false);
-		
 		int 	pos = 0,				//position in String number
 				num = 0,				//number of digits read in
 				len = number.length();
-		
 		boolean valid = true;
 		
 		while(valid && pos < len) {
-			
 			char c = number.charAt(pos);
 			pos++;
-			
 			if(num < 11 && Character.isDigit(c)) {
 				acc_num.digits[num] = (c - '0');
 				num++;
@@ -54,11 +49,10 @@ public class AccountNumber {
 			} else {
 				valid = false;
 			}
-			
 		}
 		
 		int check = acc_num.checksum();
-		if(valid && pos == len && num == 11 && check / 10 == acc_num.digits[9] && check % 10 == acc_num.digits[10])
+		if(valid && pos == len && num == len && check / 10 == acc_num.digits[9] && check % 10 == acc_num.digits[10])
 		{
 			return acc_num;
 		} else {
