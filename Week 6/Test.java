@@ -1,14 +1,30 @@
+import java.util.Scanner;
+
 public class Test {
 	
 	public static void main(String args[]) {
 	
-		int arg1 = Integer.parseInt(args[0]);
+		Scanner scan = new Scanner(System.in);
 	
-		AccountNumber arg2 = new AccountNumber(true);
-		Barcode	arg3 = arg2.toBarcode();
+		while(scan.hasNextLine()) {
 		
-		for(int i = 0; i < arg1; i++) {
-			System.out.println(arg3.toString());
+			String bits = scan.nextLine();
+			Barcode bc = Barcode.fromString(bits);
+			
+			if(bc == null) {
+				System.out.println("Not a valid account number");
+				
+			} else {
+				AccountNumber an = AccountNumber.fromBarcode(bc);
+			
+				if(an == null) {
+					System.out.println("Not a valid account number");
+					
+				} else {
+					System.out.println(an.toString());
+				}
+			}
+			
 		}
 			
 	}	

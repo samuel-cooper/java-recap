@@ -15,6 +15,10 @@ public class AccountNumber {
 		}
 
 	}
+	
+	public AccountNumber() {
+	
+	}
 
 	public String toString() {
 
@@ -72,6 +76,7 @@ public class AccountNumber {
 		for(int i = 0; i < 9; i++) {
 			sum += WEIGHTS[i] * digits[i];
 		}
+		
 		return sum % 100;
 	
 	}
@@ -86,7 +91,22 @@ public class AccountNumber {
 	//returns a new account number if a barcode contains the digits of a valid account number
 	public static AccountNumber fromBarcode(Barcode b) {
 		
+		AccountNumber ac = new AccountNumber();
+		ac.digits = b.getDigits();
 		
-	
+		if(ac.digits.length == 11) {
+		
+			int check = ac.checksum();
+			if(ac.digits[9] == check / 10 && ac.digits[10] == check % 10) {
+				return ac;
+			
+			} else {
+				return null;
+			}
+			
+		} else {
+			return null;
+		
+		}
 	}
 }

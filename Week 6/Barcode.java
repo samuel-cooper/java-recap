@@ -49,10 +49,37 @@ public class Barcode {
 		
 	}
 	
+	//ingest a string containing a bit sequence and produce an account number.
 	public static Barcode fromString(String bits) {
 	
+		String sub_bc;
+		int[] digits = new int[11];
+		int 	pos = 0,			//position in digits array
+				startIndex = 5,		//start index of substring
+				endIndex = 10;		//end index of substring
 		
+		if(bits.length() == 65) {
+			while(endIndex < 65) {
+				sub_bc = bits.substring(startIndex, endIndex);
 		
+				for(int i = 0; i < CODE.length - 2; i++) {
+					if(sub_bc.equals(CODE[i])) {
+						digits[pos] = i;
+						pos++;
+					}
+				}
+				
+				startIndex += 5;
+				endIndex += 5;
+			}
+					
+			Barcode barcode = new Barcode(digits);
+			return barcode;
+				
+		} else {
+			return null;
+		}
+				
 	}
 	
 	public int[] getDigits() {
